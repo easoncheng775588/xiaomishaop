@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+    <script>
+        // 数组去重
+        function unique(arr) {
+            let result = [];
+            for (let i = 0; i < arr.length; i++) {
+                if (result.indexOf(arr[i]) === -1) {
+                    result.push(arr[i]);
+                }
+            }
+            return result;
+        }
+
+        //防抖函数
+        function debounce(func, delay) {
+            let timer;
+            return function(...args) {
+                clearTimeout(timer);
+                timer = setTimeout(() => {
+                    func.apply(this, args);
+                }, delay);
+            };
+        }
+
+        // 截流函数（节流函数）
+        function throttle(func, delay) {
+            let lastTime = 0;
+            return function(...args) {
+                const now = Date.now();
+                if (now - lastTime >= delay) {
+                    lastTime = now;
+                    func.apply(this, args);
+                }
+            };
+        }
+
+</script>
+</body>
+</html>
